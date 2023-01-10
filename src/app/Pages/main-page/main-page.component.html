@@ -8,27 +8,25 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
+
       <button mat-menu-item (click)='navigateToMessage()'>
         <mat-icon> message</mat-icon>
         <span>Let's talk</span>
-
       </button>
 
       <button mat-menu-item (click)='navigateToAllMessage()'>
         <mat-icon>question_answer</mat-icon>
         <span> Show All Messages</span>
-
       </button>
     </mat-menu>
   </span>
   <!-- <span class="fill-remaining-space">Asseessment Task</span> -->
 
-
-<div style="margin-left: 277px; cursor: pointer;">
-  <span routerLink="/MainPage">Home </span>
-  <span routerLink="/message">Let's talk </span>
-  <span routerLink="/message/allMessage">Show All Messages </span>
-</div>
+  <div class="menu-bar">
+    <button mat-button routerLink="/home" routerLinkActive="active">Home </button>
+    <button mat-button routerLink="/message" routerLinkActive="active">Let's talk </button>
+    <button mat-button routerLink="/message/allMessage" routerLinkActive="active">Show All Messages </button>
+  </div>
 
 </mat-toolbar>
 

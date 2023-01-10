@@ -1,3 +1,27 @@
-span:hover {
-    color: rgb(211, 211, 211);
+span:hover { color: darkcyan }
+
+.menu-bar{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  span{
+    margin-left: 20px;
   }
+}
+
+.mat-menu-item:hover{
+  color: darkcyan;
+  mat-icon{
+    color: darkcyan;
+  }
+}
+
+button:hover{ color: aqua }
+
+.active{
+  background: darkcyan;
+  &:hover{
+    color: #fff;
+  }
+}
