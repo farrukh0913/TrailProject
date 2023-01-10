@@ -4,7 +4,6 @@ import { AllMessageComponent } from './Pages/all-messages/all-messages.component
 import { MainMessagePageComponent } from './Pages/main-message-page/main-message-page.component';
 
 const messageRoutes: Routes = [
-
   {
     path:'',
     component:MainMessagePageComponent

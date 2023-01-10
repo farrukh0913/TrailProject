@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Pages/home/home.component';
+import { MainPageComponent } from './Pages/main-page/main-page.component';
 import { MainPageContentComponent } from './Pages/MianPage-content/main-page-content/main-page-content.component';
 
 const routes: Routes = [
 
   {
-    path:'home',
+    path:'MainPage',
     component: MainPageContentComponent
   },
   {
@@ -15,8 +15,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
     // otherwise redirect to
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: '**', redirectTo: 'home'},
+    { path: '', redirectTo: 'MainPage', pathMatch: 'full' },
+    { path: '**', redirectTo: 'MainPage'},
 ];
 
 @NgModule({

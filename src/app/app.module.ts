@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Pages/home/home.component';
+import { MainPageComponent } from './Pages/main-page/main-page.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,15 +24,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-// import { reducers, metaReducers } from './reducers';
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    MainPageComponent,
     MainPageContentComponent
   ],
   imports: [
@@ -58,8 +53,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
           MessageEffects,]),
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideFirestore(() => getFirestore()),
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

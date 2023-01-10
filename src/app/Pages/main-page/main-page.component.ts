@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class MainPageComponent implements OnInit {
 
   constructor( private router: Router ) { }
 
   ngOnInit(): void { }
 
   navigateToHome(){
-    this.router.navigate(["/home"])
+    this.router.navigate(["/MainPage"])
   }
 
   navigateToMessage(){
