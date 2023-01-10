@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { EMenuItems } from 'src/app/Shared/common.enum';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class MainPageComponent implements OnInit {
   menuItems = EMenuItems;

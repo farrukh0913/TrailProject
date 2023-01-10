@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './Pages/main-page/main-page.component';
+import { MainPageComponent } from './Pages/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import { MainPageContentComponent } from './Pages/MianPage-content/main-page-content/main-page-content.component';
+import { HomeComponent } from './Pages/MianPage-content/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { messageReducer } from './Shared/Store/message.reducer';
 import { EffectsModule } from '@ngrx/effects';
@@ -29,7 +29,7 @@ import {MatRippleModule} from '@angular/material/core';
   declarations: [
     AppComponent,
     MainPageComponent,
-    MainPageContentComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

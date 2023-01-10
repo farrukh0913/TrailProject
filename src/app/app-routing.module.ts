@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageComponent } from './Pages/main-page/main-page.component';
-import { MainPageContentComponent } from './Pages/MianPage-content/main-page-content/main-page-content.component';
+import { MainPageComponent } from './Pages/header/header.component';
+import { HomeComponent } from './Pages/MianPage-content/home/home.component';
 
 const routes: Routes = [
   {
     path:'home',
-    component: MainPageContentComponent
+    component: HomeComponent
   },
   {
     path: 'message',
