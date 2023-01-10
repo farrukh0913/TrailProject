@@ -9,15 +9,11 @@ import { MessageFormComponent } from '../message-form/message-form.component';
   templateUrl: './main-message-page.component.html',
   styleUrls: ['./main-message-page.component.scss']
 })
+
 export class MainMessagePageComponent implements OnInit {
+  constructor(private readonly dialog: MatDialog, private router: Router) {}
 
-  constructor(
-    private readonly dialog: MatDialog,
-    private router:Router
-  ) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openMessageForm(){
     const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true });
@@ -25,8 +21,6 @@ export class MainMessagePageComponent implements OnInit {
         this.router.navigate(["/message/allMessage"])
       console.log('reasonCode: ', reasonCode);
     })
-
-
   }
 
 }

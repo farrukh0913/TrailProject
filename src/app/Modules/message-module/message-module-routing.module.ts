@@ -6,11 +6,11 @@ import { MainMessagePageComponent } from './Pages/main-message-page/main-message
 const messageRoutes: Routes = [
   {
     path:'',
-    component:MainMessagePageComponent
+    component: MainMessagePageComponent
   },
   {
     path:'allMessage',
-    component:AllMessageComponent
+    component: AllMessageComponent
   }
 ];
 

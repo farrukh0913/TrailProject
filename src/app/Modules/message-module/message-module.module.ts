@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MessageModuleRoutingModule } from './message-module-routing.module';
 import { MainMessagePageComponent } from './Pages/main-message-page/main-message-page.component';
 import { MessageFormComponent } from './Pages/message-form/message-form.component';
@@ -13,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AllMessageComponent } from './Pages/all-messages/all-messages.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -33,9 +32,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatTableModule,
     MatProgressSpinnerModule,
-
-    
-
+		MatSortModule,
   ]
 })
+
 export class MessageModuleModule { }
