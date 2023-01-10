@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSort, Sort } from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -19,28 +19,24 @@ export class AllMessageComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Name', 'Message', 'Date'];
   dataSource = new MatTableDataSource<any[]>([]);
   rowsData: any[] = [];
-  spinnerCheck: boolean = true;
+  spinnerCheck: boolean = false;
   messageForm = this.formBuilder.group({
     'name': ['', Validators.required],
     'message': ['', [Validators.required]],
   });
 
   constructor(private formBuilder: FormBuilder, private store: Store) { }
-  @ViewChild('matSort') sort = new MatSort();
 
   ngOnInit(): void {
     this.store.dispatch(getAllMessages());
     this.getAllMessages();
   }
 
-  ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
-  }
-
   /**
      * Gets Catalog years
      */
   getAllMessages() {
+    this.spinnerCheck = true;
     this.subscriptions$.push(
       this.store.pipe(select(showAllMessage)).subscribe((res: any) => {
         if (res) {
@@ -57,11 +53,10 @@ export class AllMessageComponent implements OnInit {
               date: date
             }
 
-            this.spinnerCheck = false;
-            return data
+            return data;
           });
 
-          this.dataSource.data = [...formattedData];
+          this.spinnerCheck = false;
           this.rowsData = [...formattedData];
         }
       }));
