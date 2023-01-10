@@ -12,3 +12,10 @@ mat-icon:hover{
     cursor: pointer;
     color: darkcyan;
 }
+
+.btn-save:hover{
+    background: darkcyan;
+    &:disabled{
+        background: #E0E0E0;
+    }
+}

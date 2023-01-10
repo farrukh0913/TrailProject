@@ -3,7 +3,7 @@
     <mat-icon class="close-icon" (click)="onCloseDialog()">close</mat-icon>
 </div>
 
-<form [formGroup]="messageForm" (ngSubmit)="submit()">
+<form [formGroup]="messageForm">
     <div class="tab-content">
         <div class="content-container tab-content-height">
             <mat-form-field>
@@ -18,7 +18,7 @@
                 <input matInput formControlName="message" placeholder="Message">
             </mat-form-field>
             <mat-dialog-actions>
-                <button mat-raised-button color="primary" type="submit" style="margin-left: 50px;"
+                <button mat-raised-button class="btn-save" color="primary" (click)="submit()" style="margin-left: 50px;"
                     [disabled]="messageForm.invalid"> Save
                 </button>
                 <button mat-raised-button color="warn" (click)="onCloseDialog()" style="margin-left: 20px;">Cancel
