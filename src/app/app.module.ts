@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './Pages/main-page/main-page.component';
+import { HomeComponent } from './Pages/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // import { reducers, metaReducers } from './reducers';
 
@@ -31,7 +32,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
+    HomeComponent,
     MainPageContentComponent
   ],
   imports: [
@@ -46,6 +47,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     MatToolbarModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     StoreModule.forRoot(
@@ -57,7 +59,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideFirestore(() => getFirestore()),
 
-   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

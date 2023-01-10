@@ -11,6 +11,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { AllMessageComponent } from './Pages/all-messages/all-messages.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -29,6 +31,9 @@ import { AllMessageComponent } from './Pages/all-messages/all-messages.component
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+
     
 
   ]

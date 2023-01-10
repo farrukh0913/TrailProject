@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { MessageFormComponent } from '../message-form/message-form.component';
 
@@ -12,20 +13,17 @@ export class MainMessagePageComponent implements OnInit {
 
   constructor(
     private readonly dialog: MatDialog,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
   }
 
   openMessageForm(){
-
-
-    const dialogRef = this.dialog.open(MessageFormComponent, {  });
-    dialogRef.afterClosed().pipe(take(1)).subscribe(reasonCode => {
-
-      
+    const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true });
+    dialogRef.afterClosed().subscribe(reasonCode => {
+        this.router.navigate(["/message/allMessage"])
       console.log('reasonCode: ', reasonCode);
-
     })
 
 

@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)='navigateToHome()'>
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+
+      </button>
+      <button mat-menu-item (click)='navigateToMessage()'>
+        <mat-icon> message</mat-icon>
+        <span>Let's talk</span>
+
+      </button>
+
+      <button mat-menu-item (click)='navigateToAllMessage()'>
+        <mat-icon>question_answer</mat-icon>
+        <span> Show All Messages</span>
+
+      </button>
+    </mat-menu>
+  </span>
+  <!-- <span class="fill-remaining-space">Asseessment Task</span> -->
+
+
+<div style="margin-left: 277px; cursor: pointer;">
+  <span routerLink="/home">
+    Home </span>
+
+&nbsp;    &nbsp;
+
+  <span routerLink="/message">
+    Let's talk </span>
+
+    &nbsp;    &nbsp;
+
+
+
+  <span routerLink="/message/allMessage">
+    Show All Messages </span>
+
+    &nbsp;    &nbsp;
+
+
+  </div>
+
+
+</mat-toolbar>
+
+<!-- <app-main-page-content></app-main-page-content> -->

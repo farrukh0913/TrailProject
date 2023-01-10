@@ -20,7 +20,7 @@ export class SharedServiceService {
   saveMessages(obj: any): Observable<any>{
     console.log('message: ', obj);
      
-    this.dbRef.push({name: obj.name, message: obj.message})
+    this.dbRef.push({name: obj.name, message: obj.message,id:obj.id,date:obj.date})
     return of(this.dbRef)
   }
 

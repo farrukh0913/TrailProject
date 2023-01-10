@@ -38,11 +38,11 @@ export class MessageFormComponent implements OnInit {
   }
   submit(){
 
-    console.log("asas",this.messageForm.value )
-
     const messageObject={
       name:this.messageForm.value.name,
-      message:this.messageForm.value.message
+      message:this.messageForm.value.message,
+      id:Math.floor(1000 + Math.random() * 9000),
+      date: Date.now()
     }
     this.dialogRef.close(this.store.dispatch(SaveMessage({messageData:{...messageObject}})));
   }

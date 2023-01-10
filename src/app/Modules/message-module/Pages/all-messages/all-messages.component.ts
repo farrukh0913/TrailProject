@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { getAllMessages, SaveMessage } from 'src/app/Shared/Store/message.actions';
+import { showAllMessage } from 'src/app/Shared/Store/message.selectors';
 
 
 @Component({
@@ -12,6 +14,10 @@ import { getAllMessages, SaveMessage } from 'src/app/Shared/Store/message.action
 })
 export class AllMessageComponent implements OnInit {
 
+  subscriptions$: Subscription[] = [];
+  displayedColumns: string[] = [ 'Id','Name', 'Message','Date'];
+  dataSource:any[] = [];
+  spinnerCheck: boolean = true;
 
   messageForm = this.formBuilder.group({
     'name': ['', Validators.required],
@@ -28,24 +34,41 @@ export class AllMessageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getAllMessages());
+
+
+    this.getAllMessages();
   }
 
-  saveData(){
+  /**
+     * Gets Catalog years
+     */
+  getAllMessages() {
+    this.subscriptions$.push(
+      this.store.pipe(select(showAllMessage)).subscribe((res:any) => {
+            if (res) {
+              console.log("response &&&", res)
 
-  }
+              const formattedData = res.map((res:any) => {
+                let time = res.date; // get your number
+                let date = new Date(time);
 
-  onCloseDialog(){
-    // this.dialogRef.close();
-  }
-  submit(){
+                let data = {
+                  id: res.id,
+                  name: res.name,
+                  message: res.message.replace(/^\s+|\s+$/g, ""),
+                  date: date
+                }
+                
+                this.spinnerCheck = false;
+                return data
+              });
 
-    console.log("asas",this.messageForm.value )
+              this.dataSource = [...formattedData].reverse();
+            }
+        })
+    );
+}
 
-    const messageObject={
-      name:this.messageForm.value.name,
-      message:this.messageForm.value.message
-    }
-    // this.dialogRef.close(this.store.dispatch(SaveMessage({messageData:{...messageObject}})));
-  }
+  
 
 }
