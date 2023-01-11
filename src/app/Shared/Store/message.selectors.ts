@@ -1,11 +1,14 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { IMessageState } from './message.state';
 
-/** Get dealership Feature Selector */
+//#region selectors
+
+/** message selector */
 export const messageFeatureSelector = createFeatureSelector<IMessageState>('message');
 /** Get current save status */
 
-export const  showAllMessage= createSelector(messageFeatureSelector, (state) => state.message);
+/** show all messages selector */
+export const showAllMessage = createSelector(messageFeatureSelector, (state) => state.message);
 
-
+//#endregion
 

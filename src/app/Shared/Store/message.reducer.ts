@@ -2,21 +2,18 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { getAllMessages, getAllMessagesFailed, getAllMessagesSuccess, SaveMessage, SaveMessageFail, SaveMessageSuccess } from './message.actions';
 import { IMessageState, initialMessageState } from './message.state';
 
-
-
-
+// reducer
 const createMessageReducer = createReducer(
     initialMessageState,
 
-
-    /** Get GetNpaStatListTotal for dealership tab list */
+    /** save message */
     on(SaveMessage, (state) => ({
         ...state,
         saveSuccess: null,
         inProgress: true,
     })),
 
-    /** Triggers when Get GetNpaStatListTotal loaded */
+    /** on success */
     on(SaveMessageSuccess, (state, { message }) => {
         return {
             ...state,
@@ -26,7 +23,7 @@ const createMessageReducer = createReducer(
         };
     }),
 
-    /** Triggers when GetNpaStatListTotal fails */
+    /** on fail */
     on(SaveMessageFail, (state, { error }) => ({
         ...state,
         message: null,
@@ -34,17 +31,14 @@ const createMessageReducer = createReducer(
         inProgress: false,
     })),
 
-
-
-
-       /** Get GetNpaStatListTotal for dealership tab list */
-       on(getAllMessages, (state) => ({
+    /** all messages */
+    on(getAllMessages, (state) => ({
         ...state,
         saveSuccess: null,
         inProgress: true,
     })),
 
-    /** Triggers when Get GetNpaStatListTotal loaded */
+    /** all message success */
     on(getAllMessagesSuccess, (state, { messages }) => {
         return {
             ...state,
@@ -54,19 +48,13 @@ const createMessageReducer = createReducer(
         };
     }),
 
-    /** Triggers when GetNpaStatListTotal fails */
+    /** all messages failed */
     on(getAllMessagesFailed, (state, { error }) => ({
         ...state,
         message: null,
         saveSuccess: false,
         inProgress: false,
-    })),
-
-
-
-
-
-);
+    })));
 
 export function messageReducer(state: IMessageState = initialMessageState, action: Action) {
     return createMessageReducer(state, action);

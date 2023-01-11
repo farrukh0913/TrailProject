@@ -1,31 +1,44 @@
+import { OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable, of } from 'rxjs';
+import { ITableDetails } from './common.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SharedServiceService {
 
-  constructor(private db:AngularFireDatabase) { }
+export class SharedServiceService implements OnInit {
 
+  //#region life cycle hooks
 
-  // saveMessages(data:any){
-  //   console.log("data",data)
-  //   return of([])
-  // } 
+  constructor(private readonly db: AngularFireDatabase) { }
 
+  ngOnInit() { }
+
+  //#endregion
+
+  // db variable
   dbRef = this.db.list("message-db");
 
-  saveMessages(obj: any): Observable<any>{
-    console.log('message: ', obj);
-     
-    this.dbRef.push({name: obj.name, message: obj.message,id:obj.id,date:obj.date})
-    return of(this.dbRef)
+  //#region save and fetch messages
+
+  /**
+   * save message
+   * @param message message
+   */
+  saveMessages(message: ITableDetails): Observable<ITableDetails[]> {
+    this.dbRef.push({ name: message.name, message: message.message, id: message.id, date: message.date })
+    return of(this.dbRef);
   }
 
-  getAllData(): Observable<any>{
+  /**
+   * get all messages
+   */
+  getAllData(): Observable<ITableDetails[]> {
     return this.dbRef.valueChanges();
   }
+
+  //#endregion
 
 }

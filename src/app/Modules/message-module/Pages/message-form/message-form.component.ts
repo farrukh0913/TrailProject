@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { ITableDetails } from 'src/app/Shared/common.interface';
 import { SaveMessage } from 'src/app/Shared/Store/message.actions';
 
 @Component({
@@ -30,10 +31,10 @@ export class MessageFormComponent implements OnInit {
   }
 
   submit() {
-    const messageObject = {
-      name: this.messageForm.value.name,
-      message: this.messageForm.value.message,
+    const messageObject: ITableDetails = {
       id: Math.floor(1000 + Math.random() * 9000),
+      name: this.messageForm.value.name || '',
+      message: this.messageForm.value.message || '',
       date: Date.now()
     }
 

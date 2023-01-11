@@ -1,60 +1,52 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { of, pipe } from 'rxjs';
+import { of } from 'rxjs';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { SharedServiceService } from '../shared-service.service';
 import { getAllMessages, getAllMessagesFailed, getAllMessagesSuccess, SaveMessage, SaveMessageFail, SaveMessageSuccess } from './message.actions';
-import {MatSnackBar, MatSnackBarRef} from '@angular/material/snack-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ITableDetails } from '../common.interface';
 
 @Injectable()
 
 export class MessageEffects {
+    //#region life cycle hooks
 
-    //  config = new MdSnackBarConfig();
     constructor(
         private actions$: Actions,
-        private sharedServices:SharedServiceService,
-        private snackBar: MatSnackBar
-    ) {}
+        private sharedServices: SharedServiceService,
+        private snackBar: MatSnackBar) { }
 
-AddStudentInfo$ = createEffect(() =>
-this.actions$.pipe(
-    ofType(SaveMessage),
-    switchMap((action) => {
-        // this.loaderService.showLoader();
-        return this.sharedServices.saveMessages(action.messageData).pipe(
-            map((activities) => {
-                console.log('activities: ', activities);
-                this.snackBar.open('Record Save Succesfully', 'Fire Base Upadted',{duration:1000});
-                // this.loaderService.hideLoader();
-                return SaveMessageSuccess({message:''});
-            }),
-            catchError((error) => {
-                // this.loaderService.hideLoader();
-                return of(SaveMessageFail({ error }));
-            })
-        );
-    })
-)
-);
+    //#endregion
 
+    //#region effects of actions
 
-getAlllMessages$ = createEffect(() =>
+    addStudentInfo$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(getAllMessages),
-            mergeMap(() => {
-                return this.sharedServices.getAllData().pipe(
-                    map((res) => {
-                        console.log('res-effects', res)
-                        return getAllMessagesSuccess({ messages: res });
+            ofType(SaveMessage),
+            switchMap((action) => {
+                return this.sharedServices.saveMessages(action.messageData).pipe(
+                    map((activities) => {
+                        console.log('activities: ', activities);
+                        this.snackBar.open('Data saved succesfully', 'Fire-Base upadted', { duration: 1000 });
+                        return SaveMessageSuccess({ message: '' });
                     }),
                     catchError((error) => {
-                        return of(getAllMessagesFailed({ error: error }));
-                    })
-                )
-            })
-        )
-    );
+                        return of(SaveMessageFail({ error }));
+                    }));
+            })));
+
+    getAlllMessages$ = createEffect(() =>
+        this.actions$.pipe(ofType(getAllMessages), mergeMap(() => {
+            return this.sharedServices.getAllData().pipe(
+                map((res: ITableDetails) => {
+                    console.log('res-effects', res)
+                    return getAllMessagesSuccess({ messages: res });
+                }), catchError((error) => {
+                    return of(getAllMessagesFailed({ error: error }));
+                }));
+        })));
+
+    //#endregion
 
 }

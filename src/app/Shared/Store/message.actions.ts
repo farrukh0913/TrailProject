@@ -1,35 +1,41 @@
 
 import { createAction, props } from '@ngrx/store';
+import { ITableDetails } from '../common.interface';
+
+//#region actions
 
 /**
- * @method Creates action for handling GetNpaStatListTotal Request
- * @success GetNpaStatListTotalSucess
- * @fail GetNpaStatListTotalFail
+ * save action
  */
 export const SaveMessage = createAction(
     '[NpaStat] GetNpaStatListTotal',
-    props<{ messageData: any }>()
+    props<{ messageData: ITableDetails }>()
 );
 
-/** Creates action for handling GetNpaStatListTotal success */
+/** save success */
 export const SaveMessageSuccess = createAction(
     '[NpaStat] GetNpaStatListTotal Success',
-    props<{ message: any }>()
+    props<{ message: string }>()
 );
 
-/** Creates action for handling GetNpaStatListTotal failure */
+/** save fail */
 export const SaveMessageFail = createAction(
     '[NpaStat] GetNpaStatListTotal Failed',
     props<{ error: any }>()
 );
 
-
+/** all messages */
 export const getAllMessages = createAction('[message data] loadMessages Information');
 
+// all messages success
 export const getAllMessagesSuccess = createAction(
     '[message data] loadMessages Success',
-    props<{ messages: any }>());
+    props<{ messages: ITableDetails }>());
 
+
+// all messages fail
 export const getAllMessagesFailed = createAction(
     '[message data] loadMessages Failed',
     props<{ error: any }>());
+
+    //#endregion

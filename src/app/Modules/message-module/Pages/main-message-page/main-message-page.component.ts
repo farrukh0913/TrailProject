@@ -11,17 +11,24 @@ import { MessageFormComponent } from '../message-form/message-form.component';
 })
 
 export class MainMessagePageComponent implements OnInit {
-  constructor(private readonly dialog: MatDialog, private router: Router) {}
+  //#region life cycle hooks
 
-  ngOnInit(): void {}
+  constructor(private readonly dialog: MatDialog, private router: Router) { }
 
-  openMessageForm(){
-    const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true, width: '300px',
-    height: '300px' });
+  ngOnInit(): void { }
+
+  //#endregion
+
+  //#region open dialog model
+
+  openMessageForm() {
+    const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true, width: '300px', height: '300px' });
     dialogRef.afterClosed().subscribe(reasonCode => {
-        this.router.navigate(["/message/allMessage"])
+      this.router.navigate(["/message/allMessage"])
       console.log('reasonCode: ', reasonCode);
     })
   }
+
+  //#endregion
 
 }
