@@ -1,23 +1,18 @@
 h1 {
     text-align: center;
-    margin: 10px;
+    margin    : 10px;
+    font-weight: bold;
 }
 
-.example-card {
-    max-width: 100px;
-    margin-left: auto;
-    position: relative;
-  }
-
-  .image{
-    width: 100px;
+.image {
+    width   : 100px;
     position: absolute;
-    top: 70px;
-    right: 15px;
-  }
+    top     : 70px;
+    right   : 15px;
+}
 
 p {
-    text-align: justify;
+    text-align  : justify;
     text-justify: inter-word;
-    margin: 60px 45px -35px 30px;
+    margin      : 60px 45px -35px 30px;
 }

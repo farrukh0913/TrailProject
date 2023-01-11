@@ -22,8 +22,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatRippleModule} from '@angular/material/core';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -42,9 +40,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatToolbarModule,
     MatSnackBarModule,
-    MatRippleModule,
     MatMenuModule,
-    MatCardModule,
     MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
