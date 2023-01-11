@@ -13,6 +13,7 @@ import { AllMessageComponent } from './Pages/all-messages/all-messages.component
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatTableModule,
     MatProgressSpinnerModule,
-		MatSortModule,
+    MatSortModule,
+    MatCardModule
   ]
 })
 
