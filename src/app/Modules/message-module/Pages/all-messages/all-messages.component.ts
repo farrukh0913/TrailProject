@@ -3,9 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Sort } from '@angular/material/sort';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { ITableDetails } from 'src/app/Shared/common.interface';
 import { getAllMessages } from 'src/app/Shared/Store/message.actions';
 import { showAllMessage } from 'src/app/Shared/Store/message.selectors';
+import { ITableDetails } from 'src/app/Shared/common.interface';
 
 @Component({
   selector: 'app-all-message',
@@ -14,6 +14,7 @@ import { showAllMessage } from 'src/app/Shared/Store/message.selectors';
 })
 
 export class AllMessageComponent implements OnInit {
+
   //#region global declarations
 
   subscriptions$: Subscription[] = [];
@@ -84,27 +85,25 @@ export class AllMessageComponent implements OnInit {
     this.rowsData = data.sort((a, b) => {
       const isAsc: boolean = sort.direction === 'asc';
       switch (sort.active) {
-        case 'id': return compare(a.id, b.id, isAsc);
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'message': return compare(a.message, b.message, isAsc);
-        case 'date': return compare(a.date, b.date, isAsc);
+        case 'id': return this.compare(a.id, b.id, isAsc);
+        case 'name': return this.compare(a.name, b.name, isAsc);
+        case 'message': return this.compare(a.message, b.message, isAsc);
+        case 'date': return this.compare(a.date, b.date, isAsc);
         default: return 0;
       }
     });
   }
 
-}
-
-/**
+  /**
  * compare elements
  * @param a element 1
  * @param b element 2
  * @param isAsc status (boolean)
  */
-function compare(a: string | number, b: string | number, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  compare(a: string | number, b: string | number, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  //#endregion
+
 }
-
-//#endregion
-
-

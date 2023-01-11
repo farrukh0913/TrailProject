@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home'},
   // lazy loading
-  { path: 'message', loadChildren: () => import('./Modules/message-module/message-module.module').then(module => module.MessageModuleModule) }
+  { path: 'message', loadChildren: () => import('./Modules/message-module/message-module.module').then(m => m.MessageModuleModule) }
 ];
 
 @NgModule({
