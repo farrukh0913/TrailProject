@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
-import { SharedServiceService } from '../shared-service.service';
 import { getAllMessages, getAllMessagesFailed, getAllMessagesSuccess, SaveMessage, SaveMessageFail, SaveMessageSuccess } from './message.actions';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedService } from '../shared.service';
 import { ITableDetails } from '../common.interface';
 
 @Injectable()
 
 export class MessageEffects {
+
     //#region life cycle hooks
 
     constructor(
         private actions$: Actions,
-        private sharedServices: SharedServiceService,
+        private sharedServices: SharedService,
         private snackBar: MatSnackBar) { }
 
     //#endregion

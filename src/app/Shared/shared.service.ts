@@ -8,7 +8,7 @@ import { ITableDetails } from './common.interface';
   providedIn: 'root'
 })
 
-export class SharedServiceService implements OnInit {
+export class SharedService implements OnInit {
   // db variable
   dbRef = this.db.list("message-db");
 
