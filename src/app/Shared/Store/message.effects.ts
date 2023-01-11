@@ -29,10 +29,11 @@ export class MessageEffects {
                 return this.sharedServices.saveMessages(action.messageData).pipe(
                     map((activities) => {
                         console.log('activities: ', activities);
-                        this.snackBar.open('Data saved succesfully', 'Fire-Base upadted', { duration: 1000 });
+                        this.snackBar.open('Data saved succesfully', 'Fire-Base updated', { duration: 3000 });
                         return SaveMessageSuccess({ message: '' });
                     }),
                     catchError((error) => {
+                        this.snackBar.open('Error', error, { duration: 3000 });
                         return of(SaveMessageFail({ error }));
                     }));
             })));
@@ -44,6 +45,7 @@ export class MessageEffects {
                     console.log('res-effects', res)
                     return getAllMessagesSuccess({ messages: res });
                 }), catchError((error) => {
+                    this.snackBar.open('Error', error, { duration: 3000 });
                     return of(getAllMessagesFailed({ error: error }));
                 }));
         })));

@@ -13,9 +13,20 @@ mat-icon:hover{
     color: darkcyan;
 }
 
-.btn-save:hover{
-    background: darkcyan;
-    &:disabled{
-        background: #E0E0E0;
+.btn-save{
+    margin-left: 70px;
+    &:hover{
+        background: darkcyan;
+        &:disabled{
+            background: #E0E0E0;
+        }
     }
+}
+
+.mat-form-field-appearance-outline{
+    width: 275px;
+}
+
+.text-area {
+    height: 200px;
 }

@@ -22,7 +22,7 @@ export class MainMessagePageComponent implements OnInit {
   //#region open dialog model
 
   openMessageForm() {
-    const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true, width: '300px', height: '300px' });
+    const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true, width: '350px', height: '500px' });
   }
 
   //#endregion

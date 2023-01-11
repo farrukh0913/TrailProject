@@ -6,15 +6,15 @@
 <form [formGroup]="messageForm">
     <div class="tab-content">
         <div class="content-container tab-content-height">
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <mat-label>Enter your Name</mat-label>
                 <input matInput formControlName="name" placeholder="Name">
             </mat-form-field>
 
             <br>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <mat-label>Enter Message </mat-label>
-                <textarea matInput
+                <textarea matInput class="text-area"
                 formControlName="message" placeholder="Message"
                 cdkTextareaAutosize
                 maxlength="100"
@@ -24,7 +24,7 @@
             </textarea>
             </mat-form-field>
             <mat-dialog-actions>
-                <button mat-raised-button class="btn-save" color="primary" (click)="submit()" style="margin-left: 50px;"
+                <button mat-raised-button class="btn-save" color="primary" (click)="submit()"
                     [disabled]="messageForm.invalid"> Save
                 </button>
                 <button mat-raised-button color="warn" (click)="onCloseDialog()" style="margin-left: 20px;">Cancel

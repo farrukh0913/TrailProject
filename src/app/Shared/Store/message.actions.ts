@@ -8,19 +8,19 @@ import { ITableDetails } from '../common.interface';
  * save action
  */
 export const SaveMessage = createAction(
-    '[NpaStat] GetNpaStatListTotal',
+    '[saveMessage] saveMessage',
     props<{ messageData: ITableDetails }>()
 );
 
 /** save success */
 export const SaveMessageSuccess = createAction(
-    '[NpaStat] GetNpaStatListTotal Success',
+    '[saveMessage] saveMessage Success',
     props<{ message: string }>()
 );
 
 /** save fail */
 export const SaveMessageFail = createAction(
-    '[NpaStat] GetNpaStatListTotal Failed',
+    '[saveMessage] saveMessage Failed',
     props<{ error: any }>()
 );
 
