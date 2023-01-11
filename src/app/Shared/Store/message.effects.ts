@@ -29,11 +29,10 @@ export class MessageEffects {
                 return this.sharedServices.saveMessages(action.messageData).pipe(
                     map((activities) => {
                         console.log('activities: ', activities);
-                        this.snackBar.open('Data saved succesfully', 'Fire-Base updated', { duration: 3000 });
+                        this.snackBar.open('Data saved succesfully', 'Fire-Base updated', { duration: 3000, panelClass: ['mat-toolbar', 'mat-primary'] });
                         return SaveMessageSuccess({ message: '' });
-                    }),
-                    catchError((error) => {
-                        this.snackBar.open('Error', error, { duration: 3000 });
+                    }), catchError((error) => {
+                        this.snackBar.open('Error', error, { duration: 3000, panelClass: ['mat-toolbar', 'mat-warn'] });
                         return of(SaveMessageFail({ error }));
                     }));
             })));
@@ -45,7 +44,7 @@ export class MessageEffects {
                     console.log('res-effects', res)
                     return getAllMessagesSuccess({ messages: res });
                 }), catchError((error) => {
-                    this.snackBar.open('Error', error, { duration: 3000 });
+                    this.snackBar.open('Error', error, { duration: 3000, panelClass: ['mat-toolbar', 'mat-warn'] });
                     return of(getAllMessagesFailed({ error: error }));
                 }));
         })));
