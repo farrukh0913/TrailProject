@@ -9,6 +9,8 @@ import { ITableDetails } from './common.interface';
 })
 
 export class SharedServiceService implements OnInit {
+  // db variable
+  dbRef = this.db.list("message-db");
 
   //#region life cycle hooks
 
@@ -18,24 +20,21 @@ export class SharedServiceService implements OnInit {
 
   //#endregion
 
-  // db variable
-  dbRef = this.db.list("message-db");
-
   //#region save and fetch messages
 
   /**
    * save message
    * @param message message
    */
-  saveMessages(message: ITableDetails): Observable<ITableDetails[]> {
+  saveMessages(message: ITableDetails): Observable<any> {
     this.dbRef.push({ name: message.name, message: message.message, id: message.id, date: message.date })
-    return of(this.dbRef);
+    return of(this.dbRef || []);
   }
 
   /**
    * get all messages
    */
-  getAllData(): Observable<ITableDetails[]> {
+  getAllData(): Observable<any> {
     return this.dbRef.valueChanges();
   }
 
