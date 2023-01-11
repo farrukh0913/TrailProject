@@ -22,7 +22,7 @@ export class MessageEffects {
 
     //#region effects of actions
 
-    addStudentInfo$ = createEffect(() =>
+    addMessageInfo$ = createEffect(() =>
         this.actions$.pipe(
             ofType(SaveMessage),
             switchMap((action) => {
