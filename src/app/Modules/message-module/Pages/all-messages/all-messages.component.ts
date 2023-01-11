@@ -54,7 +54,7 @@ export class AllMessageComponent implements OnInit {
             const data: ITableDetails = {
               id: res.id,
               name: res.name,
-              message: res.message ? res.message.replace(/^\s+|\s+$/g, "") : '',
+              message: res.message ? res.message.replace(/ /g,'') : '',
               date: res.date ? new Date(Number(res.date)) : undefined
             }
 

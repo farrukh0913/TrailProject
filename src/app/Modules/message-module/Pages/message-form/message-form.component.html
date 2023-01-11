@@ -13,9 +13,15 @@
 
             <br>
             <mat-form-field>
-
                 <mat-label>Enter Message </mat-label>
-                <input matInput formControlName="message" placeholder="Message">
+                <textarea matInput
+                formControlName="message" placeholder="Message"
+                cdkTextareaAutosize
+                maxlength="100"
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5">
+            </textarea>
             </mat-form-field>
             <mat-dialog-actions>
                 <button mat-raised-button class="btn-save" color="primary" (click)="submit()" style="margin-left: 50px;"

@@ -23,10 +23,6 @@ export class MainMessagePageComponent implements OnInit {
 
   openMessageForm() {
     const dialogRef = this.dialog.open(MessageFormComponent, { disableClose: true, width: '300px', height: '300px' });
-    dialogRef.afterClosed().subscribe(reasonCode => {
-      this.router.navigate(["/message/allMessage"])
-      console.log('reasonCode: ', reasonCode);
-    })
   }
 
   //#endregion
